@@ -3,7 +3,6 @@ import React from 'react';
 import { Alert,Glyphicon,Button,Modal } from 'react-bootstrap';
 import { Link } from 'react-router';
 import TodoEditForm from './TodoEditForm';
-
 export default class Todos extends React.Component {
   constructor(props){
     super(props);
@@ -12,21 +11,16 @@ export default class Todos extends React.Component {
     this.hideDeleteModal = this.hideDeleteModal.bind(this);
     this.cofirmDeleteTodo = this.cofirmDeleteTodo.bind(this);
   }
-
-  componentWillMount(){
+componentWillMount(){
     this.props.fetchTodos();
   }
-
-
-  showEditModal(todoToEdit){
+showEditModal(todoToEdit){
      this.props.mappedshowEditModal(todoToEdit);
   }
-
-  hideEditModal(){
+hideEditModal(){
      this.props.mappedhideEditModal();
   }
-
-  submitEditTodo(e){
+submitEditTodo(e){
     e.preventDefault();
     const editForm = document.getElementById('EditTodoForm');
     if(editForm.todoText.value !== ""){
@@ -39,22 +33,17 @@ export default class Todos extends React.Component {
     else{
       return;
     }
-
-  }
-
-  hideDeleteModal(){
+}
+hideDeleteModal(){
     this.props.mappedhideDeleteModal();
   }
-
-  showDeleteModal(todoToDelete){
+showDeleteModal(todoToDelete){
     this.props.mappedshowDeleteModal(todoToDelete);
   }
-
-  cofirmDeleteTodo(){
-    this.props.mappedDeleteTodo(this.props.mappedTodoState.todoToDelete);
+cofirmDeleteTodo(){
+ this.props.mappedDeleteTodo(this.props.mappedTodoState.todoToDelete);
   }
-
-  render(){
+render(){
     const todoState = this.props.mappedTodoState;
     const todos = todoState.todos;
     const editTodo = todoState.todoToEdit;
@@ -83,8 +72,7 @@ export default class Todos extends React.Component {
       </tbody>
       </table>
     }
-
-    {/* Modal for editing todo */}
+{/* Modal for editing todo */}
     <Modal
       show={todoState.showEditModal}
       onHide={this.hideEditModal}
@@ -120,7 +108,6 @@ export default class Todos extends React.Component {
         <Button onClick={this.hideEditModal}>Close</Button>
       </Modal.Footer>
     </Modal>
-
 {/* Modal for deleting todo */}
     <Modal
     show={todoState.showDeleteModal}
@@ -142,14 +129,12 @@ export default class Todos extends React.Component {
  Failed. <strong>{todoState.error} </strong>
 </Alert>
     }
-
-    {todoState.todoToDelete && !todoState.error && todoState.isFetching &&
+{todoState.todoToDelete && !todoState.error && todoState.isFetching &&
       <Alert bsStyle="success">
   <strong>Deleting.... </strong>
 </Alert>
     }
-
-    {!todoState.todoToDelete && !todoState.error && !todoState.isFetching&&
+{!todoState.todoToDelete && !todoState.error && !todoState.isFetching&&
       <Alert bsStyle="success">
  Todo <strong>{todoState.successMsg} </strong>
 </Alert>

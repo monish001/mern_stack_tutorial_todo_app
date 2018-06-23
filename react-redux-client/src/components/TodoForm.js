@@ -1,7 +1,6 @@
 // ./react-redux-client/src/components/TodoForm.js
 import React from 'react';
 import { FormGroup,ControlLabel,FormControl,Button } from 'react-bootstrap';
-
 const TodoForm = (props) => {
   return (
     <form className="form form-horizontal" id="addTodoForm" onSubmit={props.addTodo}>
@@ -32,5 +31,4 @@ const TodoForm = (props) => {
     </form>
   );
 }
-
 export default TodoForm;
