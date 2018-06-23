@@ -1,13 +1,10 @@
 // ./react-redux-client/src/actions/todoActions.js
-
 const apiUrl = "/api/";
-
 export const toggleAddBook = () => {
   return {
     type: 'TOGGLE_ADD_TODO'
   }
 }
-
 export const addNewTodo = (todo) => {console.log(todo)
   return (dispatch) => {
     dispatch(addNewTodoRequest(todo));
@@ -28,14 +25,12 @@ export const addNewTodo = (todo) => {console.log(todo)
     })
   }
 }
-
 export const addNewTodoRequest = (todo) => {
   return {
     type: 'ADD_NEW_TODO_REQUEST',
     todo
   }
 }
-
 export const addNewTodoRequestSuccess = (todo,message) => {
   return {
     type: 'ADD_NEW_TODO_REQUEST_SUCCESS',
@@ -43,21 +38,18 @@ export const addNewTodoRequestSuccess = (todo,message) => {
     message:message
   }
 }
-
 export const addNewTodoRequestFailed = (error) => {
   return {
     type: 'ADD_NEW_TODO_REQUEST_FAILED',
     error
   }
 }
-
 //Async action
 export const fetchTodos = () => {
   // Returns a dispatcher function
   // that dispatches an action at later time
   return (dispatch) => {
-
-    dispatch(fetchTodosRequest());
+dispatch(fetchTodosRequest());
     // Returns a promise
     return fetch(apiUrl)
                 .then(response => {
@@ -72,18 +64,13 @@ export const fetchTodos = () => {
                     })
                   }
                 })
-
-
-  }
 }
-
+}
 export const fetchTodosRequest = () => {
   return {
     type:'FETCH_TODOS_REQUEST'
   }
 }
-
-
 //Sync action
 export const fetchTodosSuccess = (todos,message) => {
   return {
@@ -93,14 +80,12 @@ export const fetchTodosSuccess = (todos,message) => {
     receivedAt: Date.now
   }
 }
-
 export const fetchTodosFailed = (error) => {
   return {
     type:'FETCH_TODOS_FAILED',
     error
   }
 }
-
 export const fetchTodoById = (todoId) => {
   return (dispatch) => {
     dispatch(fetchTodoRequest());
@@ -118,17 +103,13 @@ export const fetchTodoById = (todoId) => {
                  })
                }
              })
-
-  }
 }
-
+}
 export const fetchTodoRequest = () => {
   return {
     type:'FETCH_TODO_REQUEST'
   }
 }
-
-
 //Sync action
 export const fetchTodoSuccess = (todo,message) => {
   return {
@@ -138,27 +119,23 @@ export const fetchTodoSuccess = (todo,message) => {
     receivedAt: Date.now
   }
 }
-
 export const fetchTodoFailed = (error) => {
   return {
     type:'FETCH_TODO_FAILED',
     error
   }
 }
-
 export const showEditModal = (todoToEdit) => {
   return {
     type:'SHOW_EDIT_MODAL',
     todo:todoToEdit
   }
 }
-
 export const hideEditModal = () => {
   return {
     type:'HIDE_EDIT_MODAL'
   }
 }
-
 export const editTodo = (todo) => {
     return (dispatch) => {
       dispatch(editTodoRequest(todo));
@@ -179,14 +156,12 @@ export const editTodo = (todo) => {
       })
     }
 }
-
 export const editTodoRequest = (todo) => {
    return {
      type:'EDIT_TODO_REQUEST',
      todo
    }
 }
-
 export const editTodoSuccess = (todo,message) => {
   return {
     type:'EDIT_TODO_SUCCESS',
@@ -194,14 +169,12 @@ export const editTodoSuccess = (todo,message) => {
     message:message
   }
 }
-
 export const editTodoFailed = (error) => {
   return {
     type:'EDIT_TODO_FAILED',
     error
   }
 }
-
 export const deleteTodo = (todo) => {
   return (dispatch) => {
     dispatch(deleteTodoRequest(todo));
@@ -219,38 +192,32 @@ export const deleteTodo = (todo) => {
         })
       }
     })
-
-  }
 }
-
+}
 export const deleteTodoRequest = (todo) => {
    return {
      type:'DELETE_TODO_REQUEST',
      todo
    }
 }
-
 export const deleteTodoSuccess = (message) => {
   return {
     type:'DELETE_TODO_SUCCESS',
     message:message
   }
 }
-
 export const deleteTodoFailed = (error) => {
   return {
     type:'DELETE_TODO_FAILED',
     error
   }
 }
-
 export const showDeleteModal = (todoToDelete) => {
   return {
     type:'SHOW_DELETE_MODAL',
     todo:todoToDelete
   }
 }
-
 export const hideDeleteModal = () => {
   return {
     type:'HIDE_DELETE_MODAL'

@@ -1,12 +1,10 @@
 // ./react-redux-client/src/components/Todo.js
 import React from 'react';
-
 export default class Todo extends React.Component {
   componentDidMount(){
     this.props.mappedfetchTodoById(this.props.params.id);
   }
-
-  render(){
+render(){
     const todoState = this.props.mappedTodoState;
     return(
       <div className="todoDetail">
